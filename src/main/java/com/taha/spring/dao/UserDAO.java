@@ -34,8 +34,7 @@ public class UserDAO implements IUserDAO {
     @Override
     public MyUser getUserById(int id) {
         List list = getSessionFactory().getCurrentSession()
-                .createQuery("from MyUser where id=?")
-                .setParameter(0, id).list();
+                .createQuery("from MyUser where id=?").list();
         return (MyUser)list.get(0);
     }
 

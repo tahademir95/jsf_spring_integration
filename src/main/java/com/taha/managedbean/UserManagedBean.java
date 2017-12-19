@@ -29,6 +29,9 @@ public class UserManagedBean implements Serializable {
     public int id;
     public String name;
     public String surname;
+    public String password;
+
+
 
     public String addUser() {
         try {
@@ -36,6 +39,7 @@ public class UserManagedBean implements Serializable {
             myUser.setId(getId());
             myUser.setName(getName());
             myUser.setSurname(getSurname());
+            myUser.setPassword(getPassword());
             getUserService().addUser(myUser);
             return SUCCESS;
         } catch (DataAccessException e) {
@@ -44,6 +48,22 @@ public class UserManagedBean implements Serializable {
 
         return ERROR;
     }
+    public String deleteUser(){
+        try{
+            MyUser user = new MyUser();
+            user.setId(getId());
+            user.setName(getName());
+            user.setSurname(getSurname());
+            user.setPassword(getPassword());
+            getUserService().addUser(user);
+            getUserService().deleteUser(user);
+            return SUCCESS;
+        }catch (DataAccessException e){
+            e.printStackTrace();
+        }
+        return ERROR;
+    }
+
     public void reset() {
         this.setId(0);
         this.setName("");
@@ -80,6 +100,13 @@ public class UserManagedBean implements Serializable {
     }
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
 

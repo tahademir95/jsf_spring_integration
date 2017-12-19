@@ -8,25 +8,35 @@
 <h:body>
     <h:form>
         <h:outputText value="USERs : "></h:outputText>
-        <p:dataTable id="users" var="myUser" value="#{userMB.myUserList}" style="width: 10%">
+        <p:dataTable id="users" var="myUser" value="#{userMB.myUserList}" style="width: 30%">
             <p:column>
                 <f:facet name="header">
                     <h:outputText value="ID" />
                 </f:facet>
                 <h:outputText value="#{myUser.id}" />
             </p:column>
+
             <p:column>
                 <f:facet name="header">
                     <h:outputText value="Name" />
                 </f:facet>
                 <h:outputText value="#{myUser.name}" />
             </p:column>
+
             <p:column>
                 <f:facet name="header">
                     <h:outputText value="Surname" />
                 </f:facet>
                 <h:outputText value="#{myUser.surname}" />
             </p:column>
+
+            <p:column>
+                <f:facet name="header">
+                    <h:outputText value="Password" />
+                </f:facet>
+                <h:outputText value="#{myUser.password}" />
+            </p:column>
+
         </p:dataTable>
     </h:form>
 </h:body>
