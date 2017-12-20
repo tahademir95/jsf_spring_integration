@@ -48,15 +48,11 @@ public class UserManagedBean implements Serializable {
 
         return ERROR;
     }
-    public String deleteUser(){
+    public String deleteUser (MyUser mystudent){
         try{
-            MyUser user = new MyUser();
-            user.setId(getId());
-            user.setName(getName());
-            user.setSurname(getSurname());
-            user.setPassword(getPassword());
-            getUserService().addUser(user);
-            getUserService().deleteUser(user);
+            userService.deleteUser(mystudent);
+
+
             return SUCCESS;
         }catch (DataAccessException e){
             e.printStackTrace();

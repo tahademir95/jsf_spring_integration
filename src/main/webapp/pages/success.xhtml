@@ -7,37 +7,47 @@
 </h:head>
 <h:body>
     <h:form>
-        <h:outputText value="USERs : "></h:outputText>
-        <p:dataTable id="users" var="myUser" value="#{userMB.myUserList}" style="width: 30%">
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value="ID" />
-                </f:facet>
-                <h:outputText value="#{myUser.id}" />
-            </p:column>
+        <p:panel header="Registered Student Information">
+            <h:panelGrid columns="4" cellpadding="5">
 
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value="Name" />
-                </f:facet>
-                <h:outputText value="#{myUser.name}" />
-            </p:column>
+                <p:dataTable id="users" var="myUser" value="#{userMB.myUserList}" style="width: 30%">
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="ID" />
+                        </f:facet>
+                        <h:outputText value="#{myUser.id}" />
+                    </p:column>
 
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value="Surname" />
-                </f:facet>
-                <h:outputText value="#{myUser.surname}" />
-            </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Name" />
+                        </f:facet>
+                        <h:outputText value="#{myUser.name}" />
+                    </p:column>
 
-            <p:column>
-                <f:facet name="header">
-                    <h:outputText value="Password" />
-                </f:facet>
-                <h:outputText value="#{myUser.password}" />
-            </p:column>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Surname" />
+                        </f:facet>
+                        <h:outputText value="#{myUser.surname}" />
+                    </p:column>
 
-        </p:dataTable>
+                    <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="Password" />
+                        </f:facet>
+                        <h:outputText value="#{myUser.password}" />
+                    </p:column>
+
+                    <p:column>
+                        <f:facet name="header">Edit</f:facet>
+                        <p:commandButton label="deleteUser" style="position:relative; left: 20px;" actionListener="#{userMB.deleteUser(myUser)}" ajax="false" icon="ui-icon-trash" />
+                    </p:column>
+                </p:dataTable>
+            </h:panelGrid>
+            <p:button value="Register" outcome="index.xhtml"/>
+        </p:panel>
+
     </h:form>
 </h:body>
 </html>
