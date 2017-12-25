@@ -26,10 +26,21 @@
                 <p:message for="lastname" id="msgLastname" display="icon" />
 
                 <p:outputLabel for="password" value="Password:" />
-                <h:inputSecret id="password" value="#{userMB.password}" required="true" label="Firstname">
+                <h:inputSecret id="password" value="#{userMB.password}" label="Password" required="true">
                     <f:validateLength minimum="2" />
                 </h:inputSecret>
-                <p:message for="firstname" display="icon" />
+                <p:message for="password" display="icon" />
+
+                <p:outputLabel for="school" value="School:" />
+                <p:selectOneMenu id="school" value="#{userMB.school}">
+                    <f:selectItem itemLabel="Select One Item"/>
+                    <f:selectItem itemValue="Bogazici University" itemLabel="Bogazici University" />
+                    <f:selectItem itemValue="Bahcesehir University" itemLabel="Bahcesehir University" />
+                    <f:selectItem itemValue="Kadir Has University" itemLabel="Kadir Has University" />
+                    <f:selectItem itemValue="Ozyegin University" itemLabel="Ozyegin University" />
+                </p:selectOneMenu>
+                <p:message for="school" display="icon" />
+
 
             </h:panelGrid>
 

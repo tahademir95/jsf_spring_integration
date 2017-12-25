@@ -4,6 +4,7 @@
       xmlns:p="http://primefaces.org/ui">
 <h:head>
     <title>Welcome to OTV_JSF_Spring_Hibernate_Project</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUW1OOxYfeML64wVYyiD_BhlCzsi8Z3HI"></script>
 </h:head>
 <h:body>
     <h:form>
@@ -40,14 +41,30 @@
                     </p:column>
 
                     <p:column>
+                        <f:facet name="header">
+                            <h:outputText value="University Name" />
+                            <h:outputText value="#{myUser.school}" />
+                        </f:facet>
+                    </p:column>
+
+                    <p:column>
                         <f:facet name="header">Edit</f:facet>
                         <p:commandButton label="deleteUser" style="position:relative; left: 20px;" actionListener="#{userMB.deleteUser(myUser)}" ajax="false" icon="ui-icon-trash" />
                     </p:column>
                 </p:dataTable>
             </h:panelGrid>
             <p:button value="Register" outcome="index.xhtml"/>
+            <p:growl id="growl" showDetail="true" />
+
+            <f:view contentType="text/html">
+                <p:gmap id="gmap" center="41.00824,28.97836" zoom="10" type="HYBRID" model="#{userMB.simpleModel}"  style="width:100%;height:600px">
+                    <p:ajax event="overlaySelect" listener="#{userMB.onMarkerSelect}" update="growl" />
+                </p:gmap>
+            </f:view>
         </p:panel>
 
     </h:form>
+
+
 </h:body>
 </html>

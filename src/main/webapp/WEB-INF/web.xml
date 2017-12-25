@@ -14,6 +14,7 @@
         </param-value>
     </context-param>
 
+
     <!-- The Bootstrap listener to start up and shut down Spring's root WebApplicationContext. It is registered to Servlet Container -->
     <listener>
         <listener-class>
@@ -26,6 +27,7 @@
         </listener-class>
     </listener>
     <!-- Project Stage Level -->
+
     <context-param>
         <param-name>javax.faces.PROJECT_STAGE</param-name>
         <param-value>Development</param-value>

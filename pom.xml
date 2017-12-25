@@ -147,6 +147,12 @@
             <version>6.0.5.Final</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.primefaces.themes</groupId>
+            <artifactId>all-themes</artifactId>
+            <version>1.0.8</version>
+        </dependency>
+
     </dependencies>
 
     <build>
