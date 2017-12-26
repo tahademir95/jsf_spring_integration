@@ -65,6 +65,14 @@
 
     </h:form>
 
-
+    <h:form>
+        <p:panel header="Universities In The System">
+            <p:tree value="#{userMB.root}" var="node" style="height: 300px;">
+                <p:treeNode>
+                    <h:outputText value="#{node}" />
+                </p:treeNode>
+            </p:tree>
+        </p:panel>
+    </h:form>
 </h:body>
 </html>
