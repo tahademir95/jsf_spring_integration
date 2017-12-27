@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head><title>Welcome to OTV_JSF_Spring_Hibernate_Project</title></h:head>
+<h:body>
+
+    <h:form>
+        <p:panel id="panel" header="Registeration System">
+
+            <p:messages id="msgs" />
+
+            <h:panelGrid columns="3" cellpadding="5">
+
+                <p:outputLabel for="firstname" value="Firstname:" />
+                <p:inputText id="firstname" value="#{userMB.name}" required="true" label="Firstname">
+                    <f:validateLength minimum="2" />
+                </p:inputText>
+                <p:message for="firstname" display="icon" />
+
+                <p:outputLabel for="lastname" value="Lastname:" />
+                <p:inputText id="lastname" value="#{userMB.surname}" label="Lastname" required="true">
+                    <f:validateLength minimum="2" />
+                    <p:ajax update="msgLastname" event="keyup" />
+                </p:inputText>
+                <p:message for="lastname" id="msgLastname" display="icon" />
+
+                <p:outputLabel for="password" value="Password:" />
+                <h:inputSecret id="password" value="#{userMB.password}" label="Password" required="true">
+                    <f:validateLength minimum="2" />
+                </h:inputSecret>
+                <p:message for="password" display="icon" />
+
+                <p:outputLabel for="school" value="School:" />
+                <p:selectOneMenu id="school" value="#{userMB.school}">
+                    <f:selectItem itemLabel="Select One Item"/>
+                    <f:selectItem itemValue="Bogazici University" itemLabel="Bogazici University" />
+                    <f:selectItem itemValue="Bahcesehir University" itemLabel="Bahcesehir University" />
+                    <f:selectItem itemValue="Kadir Has University" itemLabel="Kadir Has University" />
+                    <f:selectItem itemValue="Ozyegin University" itemLabel="Ozyegin University" />
+                </p:selectOneMenu>
+                <p:message for="school" display="icon" />
+
+
+            </h:panelGrid>
+
+            <p:commandButton label="addUser" value="Save" update="panel" actionListener="#{userMB.addUser}" ajax="false" icon="ui-icon-check" />
+            <p:commandButton id="reset" value="Reset" action="#{userMB.reset}" ajax="false"/>
+            <p:button value="See Member" outcome="success.xhtml"/>
+            <p:button value="Home Page" outcome="index.xhtml" />
+        </p:panel>
+    </h:form>
+</h:body>
+</html>

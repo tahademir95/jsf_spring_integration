@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+    <title>Welcome to OTV_JSF_Spring_Hibernate_Project</title>
+</h:head>
+<h:body>
+    <h:form>
+        <p:panel header="Universities In The System">
+
+            <p:dataTable id="uni" var="myuni" value="#{universityMB.myUniversityList}" style="width: 30%; margin-bottom: 20px;" stickyHeader="true">
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="University Name" />
+                    </f:facet>
+                    <h:outputText value="#{myuni.school}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="University Latitude" />
+                    </f:facet>
+                    <h:outputText  value="#{myuni.latitude}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="University Longitude" />
+                    </f:facet>
+                    <h:outputText value="#{myuni.longitude}" />
+                </p:column>
+
+                <p:column>
+                    <f:facet name="header">
+                        <h:outputText value="Edit" />
+                    </f:facet>
+                    <p:commandButton label="deleteUniversity" style="position:relative; left: 20px;" actionListener="#{universityMB.deleteUniversity(myuni)}" ajax="false" icon="ui-icon-trash" />
+                </p:column>
+
+            </p:dataTable>
+
+            <p:button value="Back" outcome="addUniversity.xhtml" style="margin-right: 5px;"/>
+            <p:button value="Register" outcome="register.xhtml" style="margin-right: 5px;"/>
+            <p:button value="Home Page" outcome="index.xhtml" style="margin-right: 5px;"/>
+
+            <p:growl id="growl" showDetail="true" />
+
+        </p:panel>
+    </h:form>
+</h:body>
+</html>

@@ -43,8 +43,8 @@
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="University Name" />
-                            <h:outputText value="#{myUser.school}" />
                         </f:facet>
+                        <h:outputText value="#{myUser.school}" />
                     </p:column>
 
                     <p:column>
@@ -53,7 +53,8 @@
                     </p:column>
                 </p:dataTable>
             </h:panelGrid>
-            <p:button value="Register" outcome="index.xhtml"/>
+            <p:button value="Register" outcome="register.xhtml"/>
+            <p:button value="Home Page" outcome="index.xhtml" />
             <p:growl id="growl" showDetail="true" />
 
             <f:view contentType="text/html">
@@ -65,14 +66,5 @@
 
     </h:form>
 
-    <h:form>
-        <p:panel header="Universities In The System">
-            <p:tree value="#{userMB.root}" var="node" style="height: 300px;">
-                <p:treeNode>
-                    <h:outputText value="#{node}" />
-                </p:treeNode>
-            </p:tree>
-        </p:panel>
-    </h:form>
 </h:body>
 </html>

@@ -20,9 +20,7 @@ import org.primefaces.model.map.LatLng;
 import org.primefaces.model.map.MapModel;
 import org.primefaces.model.map.Marker;
 
-//Tree node için gerekli importlar
-import org.primefaces.model.DefaultTreeNode;
-import org.primefaces.model.TreeNode;
+
 
 
 @ManagedBean(name="userMB")
@@ -45,7 +43,7 @@ public class UserManagedBean implements Serializable {
     private Marker marker;
 
     private String school;
-    private TreeNode root;
+
 
     public String addUser() {
         try {
@@ -106,32 +104,7 @@ public class UserManagedBean implements Serializable {
         simpleModel.addOverlay(new Marker(coord4, "Kadir Has University"));
         simpleModel.addOverlay(new Marker(coord5, "Ozyegin University"));
 
-        //Tree node
-        root = new DefaultTreeNode("Root", null);
-        TreeNode bolge = new DefaultTreeNode("Marmara", root);
-        //TreeNode node1 = new DefaultTreeNode("Node 1", root);
 
-        TreeNode il = new DefaultTreeNode("Istanbul", bolge);
-        TreeNode node01 = new DefaultTreeNode("Silivri", bolge);
-
-        TreeNode avrupa_yakası = new DefaultTreeNode("Avrupa Yakası", il);
-        TreeNode asya_yakası = new DefaultTreeNode("Asya Yakası", il);
-
-        TreeNode besiktas = new DefaultTreeNode("Beşiktaş", avrupa_yakası);
-        TreeNode eminonu = new DefaultTreeNode("Eminönü", avrupa_yakası);
-        TreeNode anadolu_hisari = new DefaultTreeNode("Anadolu Hisarı", avrupa_yakası);
-        TreeNode ayazaga = new DefaultTreeNode("Ayazağa", avrupa_yakası);
-
-        TreeNode alemdag = new DefaultTreeNode("Alemdağ", asya_yakası);
-
-        besiktas.getChildren().add(new DefaultTreeNode("Bahcesehir University"));
-        eminonu.getChildren().add(new DefaultTreeNode("Kadir Has University"));
-        anadolu_hisari.getChildren().add(new DefaultTreeNode("Bogazici University"));
-        ayazaga.getChildren().add(new DefaultTreeNode("İstanbul Technical University"));
-
-        alemdag.getChildren().add(new DefaultTreeNode("Ozyegin University"));
-
-        root.getChildren().add(new DefaultTreeNode("Akdeniz"));
 
     }
 
@@ -195,9 +168,7 @@ public class UserManagedBean implements Serializable {
     public void setSchool(String school) {
         this.school = school;
     }
-    public TreeNode getRoot() {
-        return root;
-    }
+
 
 }
 

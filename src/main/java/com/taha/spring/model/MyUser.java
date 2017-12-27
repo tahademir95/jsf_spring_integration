@@ -47,6 +47,7 @@ public class MyUser {
         this.password = password;
     }
 
+
     @Column(name = "st_school", unique = true, nullable = false)
     public String getSchool() {
         return school;
