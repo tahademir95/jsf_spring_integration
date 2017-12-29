@@ -12,4 +12,12 @@ public interface IUserService {
     public MyUser getUserById(int id);
     public List<MyUser> getUsers();
 
+    public MyUser getSchool(String school);
+    public List<MyUser> getSchoolInfo();
+
+    public MyUser getSchoolLatitude(Double latitude);
+    public List<MyUser> getSchoolLatitudeList();
+
+    public MyUser getSchoolLongitude(Double longitude);
+    public List<MyUser> getSchoolLongitudeList();
 }

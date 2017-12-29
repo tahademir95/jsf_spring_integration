@@ -34,8 +34,38 @@ public class UserService implements IUserService {
     }
 
     @Override
+    public MyUser getSchool(String school) {
+        return getUserDAO().getSchool(school);
+    }
+
+    @Override
+    public List<MyUser> getSchoolInfo() {
+        return getUserDAO().getSchoolInfo();
+    }
+
+    @Override
     public List<MyUser> getUsers() {
         return getUserDAO().getUsers();
+    }
+
+    @Override
+    public MyUser getSchoolLatitude(Double latitude) {
+        return getUserDAO().getSchoolLatitude(latitude);
+    }
+
+    @Override
+    public List<MyUser> getSchoolLatitudeList() {
+        return getUserDAO().getSchoolLatitudeList();
+    }
+
+    @Override
+    public MyUser getSchoolLongitude(Double longitude) {
+        return getUserDAO().getSchoolLongitude(longitude);
+    }
+
+    @Override
+    public List<MyUser> getSchoolLongitudeList() {
+        return getUserDAO().getSchoolLongitudeList();
     }
 
     public IUserDAO getUserDAO() {
@@ -45,4 +75,5 @@ public class UserService implements IUserService {
     public void setUserDAO(IUserDAO userDAO) {
         this.userDAO = userDAO;
     }
+
 }

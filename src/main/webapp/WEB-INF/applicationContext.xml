@@ -32,15 +32,7 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
     </bean>
     <!-- ************** -->
 
-    <!--For MyUniversity model-->
-    <bean id="UniversityService" class="com.taha.spring.service.UniversityService">
-        <property name="universityDAO" ref="UniversityDAO"/>
-    </bean>
 
-    <bean id="UniversityDAO" class="com.taha.spring.dao.UniversityDAO">
-        <property name="sessionFactory" ref="SessionFactory" />
-    </bean>
-    <!-- ******************** -->
 
     <!-- Session Factory Declaration -->
     <bean id="SessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
@@ -48,7 +40,6 @@ http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
         <property name="annotatedClasses">
             <list>
                 <value>com.taha.spring.model.MyUser</value>
-                <value>com.taha.spring.model.MyUniversity</value>
             </list>
         </property>
 

@@ -5,11 +5,14 @@ import javax.persistence.*;
 @Entity
 @Table(name="myUser")
 public class MyUser {
+
     private int id;
     private String name;
     private String surname;
     private String password;
     private String school;
+    private Double latitude;
+    private Double longitude;
 
 
     @Id
@@ -56,6 +59,22 @@ public class MyUser {
         this.school = school;
     }
 
+    @Column(name = "st_schoolLatitude", unique = true, nullable = false)
+    public Double getLatitude() {
+        return latitude;
+    }
+    public void setLatitude(Double latitude) {
+        this.latitude = latitude;
+    }
+
+    @Column(name = "st_schoolLongitude", unique = true, nullable = false)
+    public Double getLongitude() {
+        return longitude;
+    }
+    public void setLongitude(Double longitude) {
+        this.longitude = longitude;
+    }
+
 
     @Override
     public String toString() {
@@ -65,6 +84,8 @@ public class MyUser {
         strBuff.append(", st_lastname : ").append(getSurname());
         strBuff.append(", st_password : ").append(getSurname());
         strBuff.append(", st_school : ").append(getSchool());
+        strBuff.append(", st_schoolLatitude : ").append(getLatitude());
+        strBuff.append(", st_schoolLongitude : ").append(getLongitude());
 
         return strBuff.toString();
     }
