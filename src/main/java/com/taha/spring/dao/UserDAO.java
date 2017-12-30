@@ -66,7 +66,7 @@ public class UserDAO implements IUserDAO {
 
     @Override
     public MyUser getSchoolLongitude(Double longitude) {
-        List list = getSessionFactory().getCurrentSession().createQuery("select sc_schoolLongitude from MyUser where st_schoolLongitude=?").list();
+        List list = getSessionFactory().getCurrentSession().createQuery("select st_schoolLongitude from MyUser where st_schoolLongitude=?").list();
         return (MyUser)list.get(6);
     }
 
@@ -77,9 +77,20 @@ public class UserDAO implements IUserDAO {
     }
 
     @Override
+    public MyUser getSchoolLocation(Double latitude, Double longitude) {
+        List list = getSessionFactory().getCurrentSession().createQuery("select st_schoolLatitude, st_schoolLongitude from MyUser where st_schoolLatitude=? and st_schoolLongitude=?").list();
+        return (MyUser) list.subList(5, 6);
+    }
+
+    @Override
+    public List<MyUser> markSchoolLocationList() {
+        List list = getSessionFactory().getCurrentSession().createQuery("select latitude, longitude from MyUser where id is not null").list();
+        return list;
+    }
+
+    @Override
     public List<MyUser> getUsers() {
         List list = getSessionFactory().getCurrentSession().createQuery("from MyUser").list();
-
         return list;
     }
 }

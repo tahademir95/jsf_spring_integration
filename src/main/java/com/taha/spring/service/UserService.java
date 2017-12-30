@@ -68,6 +68,16 @@ public class UserService implements IUserService {
         return getUserDAO().getSchoolLongitudeList();
     }
 
+    @Override
+    public MyUser getSchoolLocation(Double latitude, Double longitude) {
+        return getUserDAO().getSchoolLocation(latitude, longitude);
+    }
+
+    @Override
+    public List<MyUser> markSchoolLocationList() {
+        return getUserDAO().markSchoolLocationList();
+    }
+
     public IUserDAO getUserDAO() {
         return userDAO;
     }

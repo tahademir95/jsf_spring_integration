@@ -1,6 +1,5 @@
 package com.taha.managedbean;
 
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,6 +36,7 @@ public class UserManagedBean implements Serializable {
     List<MyUser> schoolList;
     List<MyUser> latitudeList;
     List<MyUser> longitudeList;
+    List<MyUser> locationList;
 
     public int id;
     public String name;
@@ -53,18 +53,11 @@ public class UserManagedBean implements Serializable {
     private TreeNode sch_node;
     private TreeNode lng_node;
 
-    public TreeNode getLng_node() {
-        return lng_node;
-    }
-
-    public void setLng_node(TreeNode lng_node) {
-        this.lng_node = lng_node;
-    }
-
     public UserManagedBean() {
         simpleModel = new DefaultMapModel();
     }
 
+    //This method adds a new member.
     public String addUser() {
         try {
             MyUser myUser = new MyUser();
@@ -78,6 +71,7 @@ public class UserManagedBean implements Serializable {
             myUser.setLongitude(getLongitude());
 
             getUserService().addUser(myUser);
+            reset();
 
             return SUCCESS;
         } catch (DataAccessException e) {
@@ -86,6 +80,7 @@ public class UserManagedBean implements Serializable {
         return ERROR;
     }
 
+    //This method deletes the members
     public String deleteUser (MyUser mystudent){
         try{
 
@@ -98,39 +93,54 @@ public class UserManagedBean implements Serializable {
         return ERROR;
     }
 
+    //This method resets the input values.
     public void reset() {
-        this.setId(0);
         this.setName("");
         this.setSurname("");
+        this.setPassword("");
+        this.setSchool("");
+        this.setLatitude(null);
+        this.setLongitude(null);
     }
+
+    //This method gets the users and returns as a list.
     public List<MyUser> getMyUserList() {
         myUserList = new ArrayList<MyUser>();
         myUserList.addAll(getUserService().getUsers());
         return myUserList;
     }
 
+    //This method gets the names of the universities and returns as a list.
     public List<MyUser> getSchoolList() {
         schoolList = new ArrayList<MyUser>();
         schoolList.addAll(getUserService().getSchoolInfo());
         return schoolList;
     }
 
+    //This method gets the latitudes of the universities and returns as a list.
     public List<MyUser> getLatitudeList() {
         latitudeList = new ArrayList<MyUser>();
         latitudeList.addAll(getUserService().getSchoolLatitudeList());
         return latitudeList;
     }
 
+    //This method gets the longitudes of the universities and returns as a list.
     public List<MyUser>  getLongitudeList(){
         longitudeList = new ArrayList<MyUser>();
         longitudeList.addAll(getUserService().getSchoolLongitudeList());
         return longitudeList;
     }
 
+    //This method gets the location of the universities and returns as a list.
+    public List<MyUser> getLocationList() {
+        locationList = new ArrayList<MyUser>();
+        locationList.addAll(getUserService().markSchoolLocationList());
+        return locationList;
+    }
+
+    //This method shows the universities with their locations as a tree in treetable.
     public TreeNode getRoot() {
-
         if (root == null) {
-
             root = new DefaultTreeNode("university","node", null);
             sch_node = new DefaultTreeNode("sch", "Universities", root);
 
@@ -159,10 +169,27 @@ public class UserManagedBean implements Serializable {
 
                 lng_node = new DefaultTreeNode("Longitude", schoolName[i]);
                 lng_node.getChildren().add(new DefaultTreeNode(schoolLong[i].getData()));
-                
             }
         }
         return root;
+    }
+
+    //This method shows the location of the universities if they are added to the system.
+    public void showSchoolOnMap(){
+        LatLng[] coords = new LatLng[latitudeList.size()];
+        Double[] latitudes = new Double[latitudeList.size()];
+        latitudeList.toArray(latitudes);
+
+        Double[] longitudes = new Double[longitudeList.size()];
+        longitudeList.toArray(longitudes);
+
+        String[] schoolName = new String[schoolList.size()];
+        schoolList.toArray(schoolName);
+
+        for (int i = 0; i < locationList.size(); i++){
+            coords[i] = new LatLng(latitudes[i], longitudes[i]);
+            simpleModel.addOverlay(new Marker(coords[i], schoolName[i]));
+        }
     }
 
     @PostConstruct
@@ -171,22 +198,8 @@ public class UserManagedBean implements Serializable {
         getSchoolList();
         getLatitudeList();
         getLongitudeList();
-
-        simpleModel = new DefaultMapModel();
-
-        //Shared coordinates
-        LatLng coord1 = new LatLng(41.10548, 29.02365);
-        LatLng coord2 = new LatLng(41.07991, 29.05047);
-        LatLng coord3 = new LatLng(41.04217, 29.00770);
-        LatLng coord4 = new LatLng(41.02418, 28.96106);
-        LatLng coord5 = new LatLng(41.03449, 29.25642);
-
-        //Basic marker
-        simpleModel.addOverlay(new Marker(coord1, "Istanbul Technical University"));
-        simpleModel.addOverlay(new Marker(coord2, "Bogazici University"));
-        simpleModel.addOverlay(new Marker(coord3, "Bahcesehir University"));
-        simpleModel.addOverlay(new Marker(coord4, "Kadir Has University"));
-        simpleModel.addOverlay(new Marker(coord5, "Ozyegin University"));
+        getLocationList();
+        showSchoolOnMap();
 
     }
 
@@ -267,6 +280,17 @@ public class UserManagedBean implements Serializable {
     }
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
+    }
+
+    public TreeNode getLng_node() {
+        return lng_node;
+    }
+    public void setLng_node(TreeNode lng_node) {
+        this.lng_node = lng_node;
+    }
+
+    public void setLocationList(List<MyUser> locationList) {
+        this.locationList = locationList;
     }
 
 //    public void setSchoolList(List<MyUser> schoolList) {

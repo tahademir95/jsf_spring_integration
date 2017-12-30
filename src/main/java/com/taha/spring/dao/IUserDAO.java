@@ -22,4 +22,7 @@ public interface IUserDAO {
 
     public MyUser getSchoolLongitude(Double longitude);
     public List<MyUser> getSchoolLongitudeList();
+
+    public MyUser getSchoolLocation(Double latitude, Double longitude);
+    public List<MyUser> markSchoolLocationList();
 }

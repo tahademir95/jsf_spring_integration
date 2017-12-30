@@ -14,7 +14,6 @@ public class MyUser {
     private Double latitude;
     private Double longitude;
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", unique = true, nullable = false)
@@ -24,7 +23,6 @@ public class MyUser {
     public void setId(int id) {
         this.id = id;
     }
-
 
     @Column(name="st_name", unique = true, nullable = false)
     public String getName() {
@@ -50,7 +48,6 @@ public class MyUser {
         this.password = password;
     }
 
-
     @Column(name = "st_school", unique = true, nullable = false)
     public String getSchool() {
         return school;
@@ -74,7 +71,6 @@ public class MyUser {
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
-
 
     @Override
     public String toString() {
