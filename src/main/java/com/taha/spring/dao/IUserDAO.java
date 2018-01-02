@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.taha.spring.model.MyUser;
 
+import javax.faces.model.SelectItem;
 import javax.swing.tree.TreeNode;
 
 public interface IUserDAO {
@@ -25,4 +26,6 @@ public interface IUserDAO {
 
     public MyUser getSchoolLocation(Double latitude, Double longitude);
     public List<MyUser> markSchoolLocationList();
+
+
 }

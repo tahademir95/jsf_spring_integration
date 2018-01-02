@@ -3,15 +3,14 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
 <h:head>
-    <title>Welcome to OTV_JSF_Spring_Hibernate_Project</title>
+    <title>Success Page</title>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAUW1OOxYfeML64wVYyiD_BhlCzsi8Z3HI"></script>
 </h:head>
 <h:body>
     <h:form>
-        <p:panel header="Registered Student Information">
+        <p:panel header="Students In The System" style="text-align: center;">
             <h:panelGrid columns="4" cellpadding="5">
-
-                <p:dataTable id="users" var="myUser" value="#{userMB.myUserList}" style="width: 60%">
+                <p:dataTable id="users" var="myUser" value="#{userMB.myUserList}" style="width: 100%">
                     <p:column>
                         <f:facet name="header">
                             <h:outputText value="ID" />
@@ -49,19 +48,21 @@
 
                     <p:column>
                         <f:facet name="header">Edit</f:facet>
-                        <p:commandButton label="deleteUser" style="position:relative; left: 20px;" actionListener="#{userMB.deleteUser(myUser)}" ajax="false" icon="ui-icon-trash" />
+                        <p:commandButton label="deleteUser" style="position:relative; left: 43%;" actionListener="#{userMB.deleteUser(myUser)}" ajax="false" icon="ui-icon-trash" />
                     </p:column>
                 </p:dataTable>
             </h:panelGrid>
-            <p:button value="Register" outcome="register.xhtml"/>
-            <p:button value="Home Page" outcome="index.xhtml" />
             <p:growl id="growl" showDetail="true" />
 
             <f:view contentType="text/html">
-                <p:gmap id="gmap" center="41.00824,28.97836" zoom="10" type="HYBRID" model="#{userMB.simpleModel}"  style="width:100%;height:600px">
+                <h:head>Locations Of The Universities In The System</h:head>
+                <p:gmap id="gmap" center="41.00824,28.97836" zoom="10" type="HYBRID" model="#{userMB.simpleModel}"  style="width:100%;height:600px; margin-top: 15px; margin-bottom: 15px;">
                     <p:ajax event="overlaySelect" listener="#{userMB.onMarkerSelect}" update="growl" />
                 </p:gmap>
             </f:view>
+
+            <p:button value="Register" outcome="register.xhtml" style="margin-right: 15px;"/>
+            <p:button value="Home Page" outcome="index.xhtml" />
         </p:panel>
     </h:form>
 </h:body>

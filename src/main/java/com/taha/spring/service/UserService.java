@@ -78,6 +78,7 @@ public class UserService implements IUserService {
         return getUserDAO().markSchoolLocationList();
     }
 
+
     public IUserDAO getUserDAO() {
         return userDAO;
     }

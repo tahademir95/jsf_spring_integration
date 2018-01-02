@@ -2,20 +2,16 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<h:head><title>Welcome to OTV_JSF_Spring_Hibernate_Project</title></h:head>
+<h:head><title>Home Page</title></h:head>
 <h:body>
-
     <h:form>
-        <p:panel id="panel" header="University Information System">
+        <p:panel id="panel" header="University Information System" style="text-align: center; height: 10%;">
             <p:messages id="msgs" />
-            <p:button value="Register" outcome="register.xhtml" />
+            <p:button value="Register" outcome="register.xhtml" style="margin-right: 15px; margin-top: 10px;"/>
             <p:button value="See Member" outcome="success.xhtml"/>
         </p:panel>
-    </h:form>
-
-    <h:form>
         <p:treeTable id="school" value="#{userMB.root}" var="mySchool">
-            <p:column style="width:24px">
+            <p:column style="width:24px;" headerText="Universities In The System">
                 <p:treeNode type="university" rendered="#{userMB.root.type == 'university'}">
                     <h:outputText value="#{mySchool}" />
                 </p:treeNode>

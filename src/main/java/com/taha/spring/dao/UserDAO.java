@@ -5,6 +5,7 @@ import java.util.List;
 import com.taha.spring.model.MyUser;
 import org.hibernate.SessionFactory;
 
+import javax.faces.model.SelectItem;
 import javax.swing.tree.TreeNode;
 
 public class UserDAO implements IUserDAO {
@@ -87,6 +88,7 @@ public class UserDAO implements IUserDAO {
         List list = getSessionFactory().getCurrentSession().createQuery("select latitude, longitude from MyUser where id is not null").list();
         return list;
     }
+
 
     @Override
     public List<MyUser> getUsers() {

@@ -14,6 +14,8 @@ import com.taha.spring.service.IUserService;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.faces.model.SelectItem;
+import javax.faces.model.SelectItemGroup;
 
 import org.primefaces.event.map.OverlaySelectEvent;
 import org.primefaces.model.map.DefaultMapModel;
@@ -37,6 +39,9 @@ public class UserManagedBean implements Serializable {
     List<MyUser> latitudeList;
     List<MyUser> longitudeList;
     List<MyUser> locationList;
+    List<MyUser> sortListBySchool;
+
+
 
     public int id;
     public String name;
@@ -138,6 +143,7 @@ public class UserManagedBean implements Serializable {
         return locationList;
     }
 
+
     //This method shows the universities with their locations as a tree in treetable.
     public TreeNode getRoot() {
         if (root == null) {
@@ -176,7 +182,7 @@ public class UserManagedBean implements Serializable {
 
     //This method shows the location of the universities if they are added to the system.
     public void showSchoolOnMap(){
-        LatLng[] coords = new LatLng[latitudeList.size()];
+        LatLng[] coords = new LatLng[locationList.size()];
         Double[] latitudes = new Double[latitudeList.size()];
         latitudeList.toArray(latitudes);
 
@@ -292,6 +298,8 @@ public class UserManagedBean implements Serializable {
     public void setLocationList(List<MyUser> locationList) {
         this.locationList = locationList;
     }
+
+
 
 //    public void setSchoolList(List<MyUser> schoolList) {
 //        this.schoolList = schoolList;

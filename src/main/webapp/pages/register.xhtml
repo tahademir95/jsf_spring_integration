@@ -2,16 +2,14 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:p="http://primefaces.org/ui">
-<h:head><title>Welcome to OTV_JSF_Spring_Hibernate_Project</title></h:head>
+<h:head><title>Registeration Page</title></h:head>
 <h:body>
 
     <h:form>
         <p:panel id="panel" header="Registeration System">
-
             <p:messages id="msgs" />
 
             <h:panelGrid columns="3" cellpadding="5">
-
                 <p:outputLabel for="firstname" value="Firstname:" />
                 <p:inputText id="firstname" value="#{userMB.name}" required="true" label="Firstname">
                     <f:validateLength minimum="2" />
@@ -44,8 +42,6 @@
                 <p:outputLabel for="longitude" value="Longitude: "/>
                 <p:inputText id="longitude" value="#{userMB.longitude}" required="true" label="Longitude"/>
                 <p:message for="longitude" display="icon"/>
-
-
             </h:panelGrid>
 
             <p:commandButton label="addUser" value="Save" update="panel" actionListener="#{userMB.addUser}" ajax="false" icon="ui-icon-check" />
