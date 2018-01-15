@@ -14,6 +14,7 @@ public class MyUser {
     private Double latitude;
     private Double longitude;
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", unique = true, nullable = false)
